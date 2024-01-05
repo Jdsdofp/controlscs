@@ -691,16 +691,21 @@ document.addEventListener('DOMContentLoaded', function () {
             fetch('http://localhost:8080/views')
                 .then(response => response.json())
                 .then(data => {
-                    data.registros.forEach(registro => {
-                        let status = registro.status && registro.status.toLowerCase();
-                        registro.statusIcon = getStatusIcon(status);
-                        registro.statusColor = getStatusColor(status);
-                    });
+    // Verifique se data e data.registros não são undefined
+    if (data && data.registros) {
+        // Classifique os dados com base no status
+        data.registros.forEach(registro => {
+            registro.statusIcon = registro.status.toLowerCase() === 'finalizada' ? 'fas fa-check-circle' : 'fas fa-times-circle';
+            registro.statusColor = registro.status.toLowerCase() === 'finalizada' ? 'green' : 'red';
+        });
 
-                    // Use setRowData para atualizar os dados
-                    gridApi.setGridOption('rowData', data.registros);
-                })
-                .catch(error => console.error('Erro ao obter dados da rota:', error));
+        // Atualize os dados da tabela com os dados obtidos da rota
+        gridApi.setGridOption('rowData', data.registros);
+    } else {
+        console.error('Estrutura de dados inesperada:', data);
+    }
+})
+.catch(error => console.error('Erro ao obter dados da rota:', error));
         },
     };
 
