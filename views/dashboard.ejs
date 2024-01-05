@@ -688,7 +688,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pagination: true,
         onGridReady: function (params) {
             gridApi = params.api;
-            fetch('http://localhost:8080/views')
+            fetch('https://controlapp.onrender.com/views')
                 .then(response => response.json())
                 .then(data => {
     // Verifique se data e data.registros não são undefined
