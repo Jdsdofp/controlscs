@@ -618,7 +618,8 @@
     <script src="/js/sb-admin-2.min.js"></script>
     
     <script>
-document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
+            
     let gridApi;
 
     class StatusIconRenderer {
@@ -688,7 +689,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pagination: true,
         onGridReady: function (params) {
             gridApi = params.api;
-            fetch('https://controlapp.onrender.com/views')
+            fetch('/views')
                 .then(response => response.json())
                 .then(data => {
     // Verifique se data e data.registros não são undefined

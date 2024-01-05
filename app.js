@@ -1,10 +1,13 @@
 const express = require("express");
+require('dotenv').config();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const User = require("./models/User");
 const Registro = require("./models/Registro");
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 
 const app = express();
