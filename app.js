@@ -188,7 +188,13 @@ app.get('/views', async (req, res)=>{
 })
 
 
+app.get('/openservice', (req, res)=>{
+    res.render('atendimento.ejs')
+})
 
+app.get('/closure', (req, res)=>{
+    res.render('fechamento.ejs')
+})
 
 
 app.get('/logout', (req, res) => {
